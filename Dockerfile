@@ -1,6 +1,6 @@
 FROM node:slim
-WORKDIR /simple-auth
-COPY . /simple-auth
+WORKDIR /omdb
+COPY . /omdb
 RUN npm install
 EXPOSE 5000
 CMD node index.js

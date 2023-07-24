@@ -10,8 +10,8 @@ class Controller {
     static async getMovies(req, res) {
         const { title, year, type } = req.query;
         const redisKey = `${title}${year}${type}`;
-        let results;
         let isCached = false;
+        let results;
 
         try {
             const cacheResults = await redisClient.get(redisKey);
@@ -20,7 +20,7 @@ class Controller {
                 results = JSON.parse(cacheResults);
             } else {
                 const response = await fetch(
-                    `http://www.omdbapi.com/?t=${title}&type=${type}&y=${year}&apikey=${API_KEY}`
+                    `${process.env.OMDB_API}?t=${title}&type=${type}&y=${year}&apikey=${API_KEY}`
                 );
                 results = await response.json();
                 await redisClient.set(redisKey, JSON.stringify(results));
