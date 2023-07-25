@@ -1,7 +1,8 @@
-const express = require("express");
-const cors = require("cors");
-const moviesRouter = require("./src/controllers/movies/router");
-require('dotenv').config();
+import express from "express";
+import cors from "cors";
+import moviesRouter from "./src/controllers/movies/router.mjs";
+import dotenv from "dotenv";
+dotenv.config();
 
 const PORT = process.env.PORT || 5001;
 const app = express();

@@ -2,10 +2,10 @@
     "name": "omdb-backend",
     "version": "1.0.0",
     "description": "",
-    "main": "index.js",
+    "main": "index.mjs",
     "scripts": {
-        "start": "node index.js",
-        "start:dev": "nodemon index.js",
+        "start": "node index.mjs",
+        "start:dev": "nodemon index.mjs",
         "format:check": "prettier --check .",
         "format:write": "prettier --write .",
         "lint:check": "eslint .",

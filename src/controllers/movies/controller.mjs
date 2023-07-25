@@ -1,6 +1,6 @@
-const fetch = require("node-fetch");
-const redis = require("redis");
-const { API_KEY } = require("../../constatnts");
+import fetch from "node-fetch";
+import redis from "redis";
+import { API_KEY } from "../../constatnts/index.mjs";
 const redisClient = redis.createClient();
 
 redisClient.on("error", (error) => console.error(`Error : ${error}`));
@@ -36,4 +36,4 @@ class Controller {
     }
 }
 
-module.exports = Controller;
+export default Controller;
