@@ -18,6 +18,5 @@ async function start() {
         console.log(e);
     }
 }
-//jgfjgj
-start();
 
+start();

@@ -31,7 +31,7 @@ class Controller {
                 data: results,
             });
         } catch (error) {
-            res.status(400).json({ message: "Something went wrong.", error })
+            res.status(400).json({ message: "Something went wrong.", error });
         }
     }
 }
