@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import moviesRouter from "./src/controllers/movies/router.mjs";
+import moviesRouter from "./controllers/movies/router";
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -18,6 +18,6 @@ async function start() {
         console.log(e);
     }
 }
-
+//jgfjgj
 start();
 

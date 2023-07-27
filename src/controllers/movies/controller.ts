@@ -1,7 +1,7 @@
 import fetch from "node-fetch";
-import redis from "redis";
-import { API_KEY } from "../../constatnts/index.mjs";
-const redisClient = redis.createClient();
+import { createClient } from "redis";
+import { API_KEY } from "../../constatnts";
+const redisClient = createClient();
 
 redisClient.on("error", (error) => console.error(`Error : ${error}`));
 redisClient.connect();
