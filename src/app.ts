@@ -7,7 +7,7 @@ dotenv.config();
 
 const PORT = process.env.PORT || 5001;
 const app = express();
-
+// just for testing
 app.use(cors());
 app.use(express.json());
 app.use("/movies", moviesRouter);
