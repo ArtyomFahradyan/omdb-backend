@@ -1,7 +1,8 @@
 import express from "express";
 import cors from "cors";
-import moviesRouter from "./controllers/movies/router";
 import dotenv from "dotenv";
+import moviesRouter from "./controllers/movies/router";
+
 dotenv.config();
 
 const PORT = process.env.PORT || 5001;

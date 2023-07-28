@@ -1,6 +1,5 @@
-import fetch from "node-fetch";
 import { createClient } from "redis";
-import { API_KEY } from "../../constatnts";
+import OMDBService from "./service";
 const redisClient = createClient();
 
 redisClient.on("error", (error) => console.error(`Error : ${error}`));
@@ -19,11 +18,12 @@ class Controller {
                 isCached = true;
                 results = JSON.parse(cacheResults);
             } else {
-                const response = await fetch(
-                    `${process.env.OMDB_API}?t=${title}&type=${type}&y=${year}&apikey=${API_KEY}`
+                results = await OMDBService.getMovie({ type, title, year })
+                await redisClient.setEx(
+                    redisKey,
+                    3600,
+                    JSON.stringify(results)
                 );
-                results = await response.json();
-                await redisClient.setEx(redisKey, 3600, JSON.stringify(results));
             }
 
             res.send({
