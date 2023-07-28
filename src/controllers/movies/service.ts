@@ -1,5 +1,5 @@
 import fetch from "node-fetch";
-import { API_KEY } from "../../constatnts";
+import { API_KEY } from "constatnts";
 
 class OMDBService {
     static async getMovie({

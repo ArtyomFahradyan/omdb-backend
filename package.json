@@ -4,9 +4,9 @@
     "description": "",
     "main": "index.mjs",
     "scripts": {
-        "start:dev": "nodemon --exec ts-node src/app.ts",
-        "start": "tsc && node dist/app.js",
-        "build": "tsc",
+        "start:dev": "nodemon --exec ts-node-dev -r tsconfig-paths/register ./src/app.ts",
+        "start": "node dist/app.js",
+        "build": "tsc && tsc-alias",
         "format:check": "prettier --check .",
         "format:write": "prettier --write .",
         "lint:check": "eslint .",
@@ -35,6 +35,9 @@
         "eslint-plugin-promise": "^6.1.1",
         "nodemon": "^3.0.1",
         "prettier": "^3.0.0",
-        "ts-node": "^10.9.1"
+        "ts-node": "^10.9.1",
+        "ts-node-dev": "^2.0.0",
+        "tsc-alias": "^1.8.7",
+        "tsconfig-paths": "^4.2.0"
     }
 }
