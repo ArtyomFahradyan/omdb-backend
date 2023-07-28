@@ -18,7 +18,7 @@ class Controller {
                 isCached = true;
                 results = JSON.parse(cacheResults);
             } else {
-                results = await OMDBService.getMovie({ type, title, year })
+                results = await OMDBService.getMovie({ type, title, year });
                 await redisClient.setEx(
                     redisKey,
                     3600,
