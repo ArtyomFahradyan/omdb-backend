@@ -23,7 +23,7 @@ class Controller {
                     `${process.env.OMDB_API}?t=${title}&type=${type}&y=${year}&apikey=${API_KEY}`
                 );
                 results = await response.json();
-                await redisClient.set(redisKey, JSON.stringify(results));
+                await redisClient.setEx(redisKey, 3600, JSON.stringify(results));
             }
 
             res.send({
