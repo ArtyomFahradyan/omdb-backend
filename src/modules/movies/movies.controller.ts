@@ -1,11 +1,11 @@
 import { createClient } from "redis";
-import OMDBService from "./service";
+import OMDBService from "../../services/OMDBService";
 const redisClient = createClient();
 
 redisClient.on("error", (error) => console.error(`Error : ${error}`));
 redisClient.connect();
 
-class Controller {
+class MoviesController {
     static async getMovies(req, res) {
         const { title, year, type } = req.query;
         const redisKey = `${title}${year}${type}`;
@@ -36,4 +36,4 @@ class Controller {
     }
 }
 
-export default Controller;
+export default MoviesController;

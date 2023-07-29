@@ -1,14 +1,15 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import moviesRouter from "./controllers/movies/router";
+import { corsOptions } from "./config/cors.option";
+import moviesRouter from "./modules/movies/router";
 
 dotenv.config();
 
 const PORT = process.env.PORT || 5001;
 const app = express();
 
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use("/movies", moviesRouter);
 
