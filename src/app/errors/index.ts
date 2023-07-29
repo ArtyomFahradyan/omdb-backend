@@ -8,10 +8,10 @@ import {
 
 export class BadRequest extends Error {
     status = BAD_REQUEST_CODE;
-    message;
+    message: string;
     errors;
 
-    constructor(message, errors = null) {
+    constructor(message: string, errors = null) {
         super();
         this.message = message;
         this.errors = errors;
@@ -20,10 +20,10 @@ export class BadRequest extends Error {
 
 export class NotFound extends Error {
     status = NOT_FOUND_CODE;
-    message;
+    message: string;
     errors;
 
-    constructor(message, errors = null) {
+    constructor(message: string, errors = null) {
         super();
         this.message = message;
         this.errors = errors;
@@ -46,7 +46,7 @@ export class ServiceUnavailable extends Error {
     message = SOMETHING_WENT_WRONG;
     errors;
 
-    constructor(message, errors = null) {
+    constructor(message: string, errors = null) {
         super();
 
         if (errors) {
