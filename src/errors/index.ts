@@ -4,7 +4,7 @@ import {
     NOT_FOUND_CODE,
     SERVICE_UNAVAILABLE_CODE,
     SOMETHING_WENT_WRONG,
-} from "../constatnts";
+} from "constatnts";
 
 export class BadRequest extends Error {
     status = BAD_REQUEST_CODE;
