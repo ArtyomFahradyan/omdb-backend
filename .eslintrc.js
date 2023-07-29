@@ -4,7 +4,7 @@ module.exports = {
         commonjs: true,
         es2021: true,
     },
-    extends: "standard",
+    extends: "eslint:recommended",
     overrides: [
         {
             env: {
@@ -18,6 +18,12 @@ module.exports = {
     ],
     parserOptions: {
         ecmaVersion: "latest",
+        sourceType: "module",
     },
-    rules: {},
+    rules: {
+        semi: 1,
+        quotes: ["error", "double"],
+        "multiline-comment-style": ["error", "separate-lines"],
+        "@typescript-eslint/explicit-module-boundary-types": 0,
+    },
 };
