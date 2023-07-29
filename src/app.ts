@@ -13,6 +13,7 @@ const app = express();
 
 app.use(cors(corsOptions));
 app.use(express.json());
+app.use("/movies", moviesRouter);
 app.use(
     async (
         err: Error & { status: number; errors: any },
@@ -35,8 +36,6 @@ app.use(
         });
     }
 );
-
-app.use("/movies", moviesRouter);
 
 async function start() {
     try {
