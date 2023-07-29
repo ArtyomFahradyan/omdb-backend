@@ -1,5 +1,5 @@
 import { createClient } from "redis";
-import OMDBService from "services/OMDBService";
+import OMDBService from "app/services/OMDBService";
 const redisClient = createClient();
 
 redisClient.on("error", (error) => console.error(`Error : ${error}`));
