@@ -1,10 +1,9 @@
-import express, { Request, Response, NextFunction } from "express";
+import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import { corsOptions } from "config/cors.option";
 import { moviesRouter } from "modules";
-import { BAD_REQUEST_CODE } from "constatnts";
-import { ServiceUnavailable } from "errors";
+import { ErrorHandlerMiddleware } from "middlewares";
 
 dotenv.config();
 
@@ -14,28 +13,7 @@ const app = express();
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use("/movies", moviesRouter);
-app.use(
-    async (
-        err: Error & { status: number; errors: any },
-        req: Request,
-        res: Response,
-        next: NextFunction
-    ) => {
-        if (!err.status) {
-            next(new ServiceUnavailable(err.message));
-        }
-
-        let status = err.status || BAD_REQUEST_CODE;
-
-        return res.status(status).json({
-            status: status,
-            data: null,
-            message: err.message || "",
-            errors: err.errors || null,
-            body: req.body,
-        });
-    }
-);
+app.use(ErrorHandlerMiddleware.handler);
 
 async function start() {
     try {
