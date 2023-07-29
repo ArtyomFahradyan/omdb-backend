@@ -1,6 +1,6 @@
 import fetch from "node-fetch";
-import { API_KEY, NOT_EXISTS, SOMETHING_WENT_WRONG } from "constatnts";
-import { ExternalApiError, NotFound } from "errors";
+import { API_KEY, NOT_EXISTS, SOMETHING_WENT_WRONG } from "app/constatnts";
+import { ExternalApiError, NotFound } from "app/errors";
 
 class OMDBService {
     static async getMovie({

@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
-import { ServiceUnavailable } from "errors";
-import { BAD_REQUEST_CODE } from "constatnts";
+import { ServiceUnavailable } from "app/errors";
+import { BAD_REQUEST_CODE } from "app/constatnts";
 
 class ErrorHandlerMiddleware {
     static async handler(
