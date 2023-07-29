@@ -2,7 +2,7 @@
     "name": "omdb-backend",
     "version": "1.0.0",
     "description": "",
-    "main": "index.mjs",
+    "main": "dist/server.js",
     "scripts": {
         "start:dev": "nodemon --exec ts-node-dev -r tsconfig-paths/register src/server.ts",
         "start": "node dist/server.js",
