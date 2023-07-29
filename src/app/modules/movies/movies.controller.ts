@@ -1,33 +1,18 @@
-import { createClient } from "redis";
+import { Request, Response, NextFunction } from "express";
 import OMDBService from "app/services/OMDBService";
-const redisClient = createClient();
-
-redisClient.on("error", (error) => console.error(`Error : ${error}`));
-redisClient.connect();
+import redisClient from "app/redis";
 
 class MoviesController {
-    static async getMovies(req, res, next) {
+    static async getMovies(req: Request, res: Response, next: NextFunction) {
         const { title, year, type } = req.query;
         const redisKey = `${title}${year}${type}`;
-        let isCached = false;
-        let results;
 
         try {
-            const cacheResults = await redisClient.get(redisKey);
-            if (cacheResults) {
-                isCached = true;
-                results = JSON.parse(cacheResults);
-            } else {
-                results = await OMDBService.getMovie({ type, title, year });
-                await redisClient.setEx(
-                    redisKey,
-                    3600,
-                    JSON.stringify(results)
-                );
-            }
+            const results = await OMDBService.getMovie({ type, title, year });
+            await redisClient.setEx(redisKey, 3600, JSON.stringify(results));
 
             res.send({
-                fromCache: isCached,
+                fromCache: false,
                 data: results,
             });
         } catch (error) {

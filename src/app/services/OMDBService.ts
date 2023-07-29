@@ -1,17 +1,12 @@
 import fetch from "node-fetch";
 import { API_KEY, NOT_EXISTS, SOMETHING_WENT_WRONG } from "app/constatnts";
 import { ExternalApiError, NotFound } from "app/errors";
+import { ParsedQs } from "qs";
+
+type Param = undefined | string | string[] | ParsedQs | ParsedQs[];
 
 class OMDBService {
-    static async getMovie({
-        type,
-        title,
-        year,
-    }: {
-        title: string;
-        type: string;
-        year: string;
-    }) {
+    static async getMovie({ type, title, year }: Record<string, Param>) {
         let response;
         try {
             response = await fetch(
