@@ -1,11 +1,11 @@
-import express from "express";
+import express, { Express } from "express";
 import cors from "cors";
 import { corsOptions } from "./config/cors.option";
 import { moviesRouter } from "./modules";
 import { ErrorHandlerMiddleware } from "./middlewares";
 
 class Application {
-    app;
+    app: Express;
 
     constructor() {
         this.app = express();
