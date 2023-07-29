@@ -1,12 +1,12 @@
 import { createClient } from "redis";
-import OMDBService from "../../services/OMDBService";
+import OMDBService from "services/OMDBService";
 const redisClient = createClient();
 
 redisClient.on("error", (error) => console.error(`Error : ${error}`));
 redisClient.connect();
 
 class MoviesController {
-    static async getMovies(req, res) {
+    static async getMovies(req, res, next) {
         const { title, year, type } = req.query;
         const redisKey = `${title}${year}${type}`;
         let isCached = false;
@@ -31,7 +31,7 @@ class MoviesController {
                 data: results,
             });
         } catch (error) {
-            res.status(400).json({ message: "Something went wrong.", error });
+            next(error);
         }
     }
 }
