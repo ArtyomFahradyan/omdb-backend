@@ -10,6 +10,8 @@ class MoviesController {
         try {
             const results = await OMDBService.getMovie({ type, title, year });
             await redisClient.setEx(redisKey, 3600, JSON.stringify(results));
+            // eslint-disable-next-line no-console
+            console.log(results, "results");
 
             res.send({
                 fromCache: false,

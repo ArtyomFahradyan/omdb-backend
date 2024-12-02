@@ -8,7 +8,6 @@ async function cacheMiddleware(
     const { title, year, type } = req.query;
     const redisKey = `${title}${year}${type}`;
     const data = await redisClient.get(redisKey);
-
     if (data && Object.keys(data).length) {
         res.send({
             fromCache: true,
